@@ -11,4 +11,8 @@ class CalculatorShould {
     public void sum() {
         assertEquals(5, calculator.sum(2, 3));
     }
+
+    @Test void substract() {
+        assertEquals(3, calculator.substract(5, 2));
+    }
 }
