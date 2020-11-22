@@ -67,7 +67,9 @@ pipeline {
           always {
                mail to: 'rhounkpe@gmail.com',
                subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
-               body: "Your build completed, please check: ${env.BUILD_URL}"
+               body: "Your build completed, please check: ${env.BUILD_URL}",
+               // Adding a cleaning stage environment
+               sh "docker stop calculator"
           }
           /*
           // pipeline configuration for Slack to send notifications after the build fails
