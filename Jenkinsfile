@@ -1,20 +1,15 @@
 pipeline {
-    agent any
-    stages {
-        stage("Checkout") {
-            steps {
-                git url: 'https://github.com/rhounkpe/calculator.git'
-            }
-        }
-        stage('Compile') {
-            steps {
-                sh 'sh "./gradlew compileJava"'
-            }
-        }
-        stage('Unit test') {
-            steps {
-                sh "./gradlew test"
-            }
-        }
-    }
+     agent any
+     stages {
+          stage("Compile") {
+               steps {
+                    sh "./gradlew compileJava"
+               }
+          }
+          stage("Unit test") {
+               steps {
+                    sh "./gradlew test"
+               }
+          }
+     }
 }
