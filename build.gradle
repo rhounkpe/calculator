@@ -33,3 +33,9 @@ jacocoTestCoverageVerification {
 		}
 	}
 }
+
+apply plugin: 'checkstyle'
+
+checkstyle {
+	checkstyleTest.enabled = false
+}
