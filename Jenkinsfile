@@ -40,10 +40,14 @@ pipeline {
                     sh "./gradlew build"
                }
           }
-
           stage("Docker build") {
                steps {
                     sh "docker build -t rhounkpe/calculator ."
+               }
+          }
+          stage("Docker push") {
+               steps {
+                    sh "docker push rhounkpe/calculator"
                }
           }
      }
