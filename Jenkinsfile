@@ -65,9 +65,11 @@ pipeline {
      post {
            // failure
           always {
+               /*
                mail to: 'rhounkpe@gmail.com',
                subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
                body: "Your build completed, please check: ${env.BUILD_URL}",
+               */
                // Adding a cleaning stage environment
                sh "docker stop calculator"
           }
