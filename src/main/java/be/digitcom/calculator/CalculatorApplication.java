@@ -1,6 +1,8 @@
 package be.digitcom.calculator;
 
 import com.hazelcast.client.config.ClientConfig;
+import com.hazelcast.config.Config;
+import com.hazelcast.config.JoinConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
@@ -18,10 +20,18 @@ public class CalculatorApplication {
 	}
 
 	@Bean
-	public ClientConfig hazelcastClientConfig() {
+	public /*ClientConfig*/Config  hazelcastClientConfig() {
+		/*
 		ClientConfig clientConfig = new ClientConfig();
-		clientConfig.getNetworkConfig().addAddress("hazelcast");
+		clientConfig.getNetworkConfig().addAddress("localhost");
 		return clientConfig;
+
+		 */
+		Config config = new Config();
+		JoinConfig joinConfig = config.getNetworkConfig().getJoin();
+		joinConfig.getMulticastConfig().setEnabled(false);
+		joinConfig.getKubernetesConfig().setEnabled(true);
+		return config;
 	}
 
 }
